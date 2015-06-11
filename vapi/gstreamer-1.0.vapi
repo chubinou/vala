@@ -2193,6 +2193,17 @@ namespace Gst {
 	[CCode (cheader_filename = "gst/gst.h")]
 	[SimpleType]
 	public struct ClockTime : uint64 {
+		public string to_string() {
+			if ((uint64)this == Gst.CLOCK_TIME_NONE) {
+				return "9:99:99.999999999";
+			}
+			return "%u:%02u:%02u.%09u".printf(
+				(uint)(this / (Gst.SECOND * 60 * 60)),
+				(uint)((this / (Gst.SECOND * 60)) % 60),
+				(uint)((this / Gst.SECOND) % 60),
+				(uint)(this % Gst.SECOND)
+				);
+		}
 	}
 	[CCode (cheader_filename = "gst/gst.h")]
 	[SimpleType]
