@@ -588,7 +588,7 @@ namespace Gst {
 		public unowned Gst.Meta? add_meta (Gst.MetaInfo info, void* @params);
 		[CCode (has_construct_function = false)]
 		public Buffer.allocate (Gst.Allocator? allocator, size_t size, Gst.AllocationParams? @params);
-		public Gst.Buffer append (owned Gst.Buffer buf2);
+		public static Gst.Buffer append (owned Gst.Buffer buf1, owned Gst.Buffer buf2);
 		public void append_memory (owned Gst.Memory mem);
 		public Gst.Buffer append_region (owned Gst.Buffer buf2, ssize_t offset, ssize_t size);
 		[CCode (instance_pos= 1.9)]
