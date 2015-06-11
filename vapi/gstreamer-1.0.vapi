@@ -2159,9 +2159,10 @@ namespace Gst {
 	[CCode (cheader_filename = "gst/gst.h", type_cname = "GstURIHandlerInterface", type_id = "gst_uri_handler_get_type ()")]
 	public interface URIHandler : GLib.Object {
 		[CCode (array_length = false, array_null_terminated = true)]
-		public unowned string[]? get_protocols ();
+		public abstract unowned string[]? get_protocols ();
 		public abstract string? get_uri ();
-		public Gst.URIType get_uri_type ();
+		[CCode (vfunc_name="get_type")]
+		public abstract Gst.URIType get_uri_type ();
 		public abstract bool set_uri (string uri) throws GLib.Error;
 	}
 	[CCode (cheader_filename = "gst/gst.h", has_type_id = false)]
