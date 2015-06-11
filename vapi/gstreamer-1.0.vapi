@@ -1095,6 +1095,23 @@ namespace Gst {
 		public virtual signal void no_more_pads ();
 		public virtual signal void pad_added (Gst.Pad pad);
 		public virtual signal void pad_removed (Gst.Pad pad);
+
+		[CCode(cname="GST_CAT_ERROR_OBJECT", instance_pos=1.9)]
+		public void error(DebugCategory* cat, ...);
+		[CCode(cname="GST_CAT_WARNING_OBJECT", instance_pos=1.9)]
+		public void warning(DebugCategory* cat, ...);
+		[CCode(cname="GST_CAT_INFO_OBJECT", instance_pos=1.9)]
+		public void info(DebugCategory* cat, ...);
+		[CCode(cname="GST_CAT_DEBUG_OBJECT", instance_pos=1.9)]
+		public void debug(DebugCategory* cat, ...);
+		[CCode(cname="GST_CAT_LOG_OBJECT", instance_pos=1.9)]
+		public void log(DebugCategory* cat, ...);
+		[CCode(cname="GST_CAT_FIXME_OBJECT", instance_pos=1.9)]
+		public void fixme(DebugCategory* cat, ...);
+		[CCode(cname="GST_CAT_TRACE_OBJECT", instance_pos=1.9)]
+		public void trace(DebugCategory* cat, ...);
+		[CCode(cname="GST_CAT_TRACE_OBJECT", instance_pos=1.9)]
+		public void trace(DebugCategory* cat, string message, unowned uint8[] data);
 	}
 	[CCode (cheader_filename = "gst/gst.h", type_id = "gst_element_factory_get_type ()")]
 	public class ElementFactory : Gst.PluginFeature {
@@ -2179,6 +2196,8 @@ namespace Gst {
 	}
 	[CCode (cheader_filename = "gst/gst.h", has_type_id = false)]
 	public struct DebugCategory {
+		[CCode(cname="GST_DEBUG_CATEGORY_INIT")]
+		public void init(string name, DebugColorFlags color, string description);
 		public void free ();
 		public uint get_color ();
 		public unowned string get_description ();
@@ -2186,6 +2205,22 @@ namespace Gst {
 		public Gst.DebugLevel get_threshold ();
 		public void reset_threshold ();
 		public void set_threshold (Gst.DebugLevel level);
+		[CCode(cname="GST_CAT_ERROR")]
+		public void error(...);
+		[CCode(cname="GST_CAT_WARNING")]
+		public void warning(...);
+		[CCode(cname="GST_CAT_INFO")]
+		public void info(...);
+		[CCode(cname="GST_CAT_DEBUG")]
+		public void debug(...);
+		[CCode(cname="GST_CAT_LOG")]
+		public void log(...);
+		[CCode(cname="GST_CAT_FIXME")]
+		public void fixme(...);
+		[CCode(cname="GST_CAT_TRACE")]
+		public void trace(...);
+		[CCode(cname="GST_CAT_MEMDUMP")]
+		public void memdump(string message, unowned uint8[] data);
 	}
 	[CCode (cheader_filename = "gst/gst.h")]
 	[SimpleType]
