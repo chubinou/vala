@@ -591,7 +591,8 @@ namespace Gst {
 		public Gst.Buffer append (owned Gst.Buffer buf2);
 		public void append_memory (owned Gst.Memory mem);
 		public Gst.Buffer append_region (owned Gst.Buffer buf2, ssize_t offset, ssize_t size);
-		public bool copy_into (Gst.Buffer src, Gst.BufferCopyFlags flags, size_t offset, size_t size);
+		[CCode (instance_pos= 1.9)]
+		public bool copy_into (Gst.Buffer dst, Gst.BufferCopyFlags flags, size_t offset, size_t size);
 		public Gst.Buffer copy_region (Gst.BufferCopyFlags flags, size_t offset, size_t size);
 		public size_t extract (size_t offset, void* dest, size_t size);
 		public void extract_dup (size_t offset, size_t size, [CCode (array_length_cname = "dest_size", array_length_pos = 3.1, array_length_type = "gsize")] out uint8[] dest);
