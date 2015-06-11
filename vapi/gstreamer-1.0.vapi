@@ -728,6 +728,8 @@ namespace Gst {
 		public Caps.empty ();
 		[CCode (has_construct_function = false)]
 		public Caps.empty_simple (string media_type);
+		[CCode (has_construct_function = false)]
+		public Caps.simple (string media_type, ...);
 		public Gst.Caps fixate ();
 		public static Gst.Caps from_string (string string);
 		[CCode (has_construct_function = false)]
